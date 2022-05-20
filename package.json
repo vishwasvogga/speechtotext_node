@@ -1,0 +1,32 @@
+{
+  "name": "speech_to_text_node",
+  "version": "1.0.0",
+  "description": "Continous speech to text backend in node",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishwasvogga/speechtotext_node.git"
+  },
+  "keywords": [
+    "node",
+    "speech",
+    "to",
+    "text"
+  ],
+  "author": "vishwas poojary k",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vishwasvogga/speechtotext_node/issues"
+  },
+  "homepage": "https://github.com/vishwasvogga/speechtotext_node#readme",
+  "dependencies": {
+    "@google-cloud/speech": "^4.10.2",
+    "node-record-lpcm16": "^1.0.1"
+  }
+}
