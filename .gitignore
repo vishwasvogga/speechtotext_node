@@ -1,1 +1,4 @@
 node_modules/
+sox/
+google_cred.json
+.env

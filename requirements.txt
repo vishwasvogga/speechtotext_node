@@ -1,0 +1,3 @@
+SOX must be installed in the system - http://sox.sourceforge.net/ or brew install sox and must be on PATH
+Node 10 is minimum
+Have assemblyai account created, https://app.assemblyai.com/
