@@ -30,11 +30,11 @@ ex.getRandomId = function () {
 	return uuidv4();
 }
 
-ex.registerRouters = function (server) {
+ex.registerRouters = function (server,direname) {
 	fs
-		.readdirSync(__dirname + '/router')
+		.readdirSync(direname + '/router')
 		.forEach(file => {
-			var route = require(path.join(__dirname + '/router', file));
+			var route = require(path.join(direname + '/router', file));
 			server.route(route);
 		});
 }
@@ -73,6 +73,20 @@ ex.roundNumber = function roundNumber(number) {
 	return Math.round((number + Number.EPSILON) * d) / d;
 
 }
+
+ex.basciAuthValidate = async (request, username, password, h) => {
+
+	let isValid=false;
+	if(username == process.env.basic_auth_user && password == process.env.basic_auth_key){
+		const credentials = {"valid":true };
+		isValid=true;
+		return { isValid, credentials };
+	}else{
+		const credentials = {"valid":false };
+		return { isValid, credentials };
+	}
+
+};
 
 module.exports = ex;
 

@@ -1,4 +1,5 @@
-const { log, logType, registerRouters } = require('./util/util');
+require('dotenv').config()
+const { log, logType, registerRouters, basciAuthValidate} = require('./util/util');
 const Hapi = require('@hapi/hapi');
 const path = require('path');
 const fs = require('fs');
@@ -28,9 +29,14 @@ async function startServer() {
         }
     })
 
+    //add basic auth
+    await server.register(require('@hapi/basic'));
+    server.auth.strategy('simple', 'basic', {validate :basciAuthValidate });
+    server.auth.default('simple');
+
     //register routers
     log(logType.info, "registering routers");
-    registerRouters(server);
+    registerRouters(server,__dirname);
 
 
 
@@ -44,7 +50,6 @@ async function startServer() {
     } else {
         log(logType.info, " Server started at ", process.env.port);
         log(logType.info,server.info.address)
-        startCron();
     }
 }
 

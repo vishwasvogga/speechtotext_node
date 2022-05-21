@@ -1,6 +1,6 @@
 require('dotenv').config()
 const recorder = require('node-record-lpcm16');
-const api = require("../util/api")
+const api = require("../controllers/api")
 const {Writable} = require("stream")
 
 

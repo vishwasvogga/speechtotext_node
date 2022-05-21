@@ -8,8 +8,8 @@ module.exports = [
                 return res.response({ success: true }).code(200);
             },
             auth: {
-                strategy: 'jwt',
-                mode: 'optional'
+                strategy: 'simple',
+                // mode: 'optional'
             }
         }
     },
@@ -22,8 +22,8 @@ module.exports = [
                 return res.response(temp).code(200);
             },
             auth: {
-                strategy: 'jwt',
-                mode: 'optional'
+                strategy: 'simple',
+                // mode: 'optional'
             }
         }
     }

@@ -53,4 +53,6 @@ function main(
   console.log('Listening, press Ctrl+C to stop.');
   // [END micStreamRecognize]
 }
-module.exports = main;
+
+main()
+//module.exports = main;
