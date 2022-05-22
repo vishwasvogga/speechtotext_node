@@ -1,5 +1,7 @@
 # speechtotext_node
 Continuous text to speech recognition backend in node js.
+
+
 1)Create account in WIT.AI and train your model
 
 2) Add the env file in root (.env)
