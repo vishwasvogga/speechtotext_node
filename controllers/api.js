@@ -6,12 +6,13 @@ const ex = {}
  * @param {*} audioData Readable stream containing audio data in chunks
  * @returns Readable stream containing wit ai responces in chunks
  */
-ex.getTextFromSpeech = async function getTextFromSpeech(audioData) {
+ex.getTextFromSpeech = async function getTextFromSpeech(audioData,content_type) {
     const witToken = process.env.witai_server_access_token // get one from wit.ai!
+   // const audioType = 'audio/raw;encoding=signed-integer;bits=16;rate=8k;endian=little'
     const params = {
         headers: {
             'Authorization': `Bearer ${witToken}`,
-            'Content-Type': 'audio/wav',
+            'Content-Type': content_type,
             "Transfer-encoding": "chunked"
         }
     };
