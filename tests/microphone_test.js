@@ -6,7 +6,6 @@ function main(
   // [START micStreamRecognize]
   const recorder = require('node-record-lpcm16');
   const fs = require("fs")
-  const api = require("../util/api")
   const {log} = require("../util/util")
 
   // Create a writable stream
@@ -17,7 +16,7 @@ function main(
 
     var readAudio = fs.readFileSync('output.wav', { encoding: 'binary' });
 
-    let resp  = await api.getTextFromSpeech(readAudio)
+   // let resp  = await api.getTextFromSpeech(readAudio)
     log(2,resp)
 
   });

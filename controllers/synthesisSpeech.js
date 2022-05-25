@@ -73,8 +73,8 @@ ex.synthesisAudioFromFileStream = async function synthesisAudioFromFile(req, res
         //write function in writable on data recive from wit ai in chunks
         var final_response = null;
         writableStream._write = function (chunk, encoding, done) {
+            let data = chunk.toString();
             try {
-                let data = chunk.toString();
                 final_response = JSON.parse(data.replace(/(?:\r\n|\r|\n)/g, ''))
                 //null check to prevent premature ending of readable
                 //push the wit ai data to readable
@@ -83,6 +83,11 @@ ex.synthesisAudioFromFileStream = async function synthesisAudioFromFile(req, res
                 }
                 
             } catch (e) {
+               // console.log(e)
+                if(data != null){
+                    log(1,"Pushing unparsed data");
+                    readableStream.push(data, "utf-8")
+                }
             }
             done();
         };
@@ -136,7 +141,7 @@ async function getReplyTypeFromIntent(wit_resp) {
         }
 
         switch (most_accurate_intent_name) {
-            case "what_time": return await getTimeAction();
+            case "what_time": return await getTimeAction(wit_resp.text);
             default: return await stub();
         }
     } else {
