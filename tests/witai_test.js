@@ -2,6 +2,7 @@ require('dotenv').config()
 const recorder = require('node-record-lpcm16');
 const api = require("../controllers/api")
 const {Writable} = require("stream")
+const {log} = require("../util/util")
 
 
 async function start(){
@@ -20,7 +21,7 @@ async function start(){
   writableStream._write = function (chunk, encoding, done) {
     try{
       let data = chunk.toString();
-      console.log(JSON.parse(data.replace(/(?:\r\n|\r|\n)/g, '')))
+      log(2,JSON.parse(data.replace(/(?:\r\n|\r|\n)/g, '')))
     }catch(e){
     }
     done();

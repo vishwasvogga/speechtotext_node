@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { log, logType, registerRouters, basciAuthValidate} = require('./util/util');
+const { log, logType, registerRouters, basciAuthValidate } = require('./util/util');
 const Hapi = require('@hapi/hapi');
 const path = require('path');
 const fs = require('fs');
@@ -17,6 +17,16 @@ async function startServer() {
     const server = Hapi.server({
         port: process.env.port,
         host: process.env.host,
+        // mime: {
+        //     override: {
+        //         'text/event-stream': {
+        //             compressible: false
+        //         },
+        //         "application/octet-stream":{
+        //             compressible: false
+        //         }
+        //     }
+        // }
     });
 
     //enable cors
@@ -31,12 +41,12 @@ async function startServer() {
 
     //add basic auth
     await server.register(require('@hapi/basic'));
-    server.auth.strategy('simple', 'basic', {validate :basciAuthValidate });
+    server.auth.strategy('simple', 'basic', { validate: basciAuthValidate });
     server.auth.default('simple');
 
     //register routers
     log(logType.info, "registering routers");
-    registerRouters(server,__dirname);
+    registerRouters(server, __dirname);
 
 
 
@@ -49,10 +59,10 @@ async function startServer() {
         throw new Error("Server not started!");
     } else {
         log(logType.info, " Server started at ", process.env.port);
-        log(logType.info,server.info.address)
+        log(logType.info, server.info.address)
     }
 }
 
 startServer();
 
-  
+
