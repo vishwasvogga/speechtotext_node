@@ -41,6 +41,7 @@ async function startServer() {
 
     //add basic auth
     await server.register(require('@hapi/basic'));
+    await server.register(require('susie'));
     server.auth.strategy('simple', 'basic', { validate: basciAuthValidate });
     server.auth.default('simple');
 
@@ -58,6 +59,10 @@ async function startServer() {
         log(err, logType.error);
         throw new Error("Server not started!");
     } else {
+
+        let web_socket = require('./controllers/socket_stream')
+        web_socket.createWebSocket(server.listener)
+
         log(logType.info, " Server started at ", process.env.port);
         log(logType.info, server.info.address)
     }

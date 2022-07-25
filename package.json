@@ -26,15 +26,23 @@
   },
   "homepage": "https://github.com/vishwasvogga/speechtotext_node#readme",
   "dependencies": {
+    "@aws-sdk/client-transcribe-streaming": "^3.131.0",
     "@hapi/basic": "6.0.0",
     "@hapi/hapi": "^18.4.0",
+    "async-iterator-to-stream": "^1.2.0",
+    "audiobuffer-to-wav": "^1.0.0",
     "axios": "^0.27.2",
     "chalk": "^4.1.2",
     "dotenv": "^16.0.1",
     "hapi-cors": "^1.0.3",
     "node-cache": "^5.1.2",
     "node-record-lpcm16": "^1.0.1",
+    "node-wav": "0.0.2",
     "node-wit": "^6.2.1",
-    "uuidv4": "^6.2.13"
+    "susie": "^3.0.0",
+    "uuidv4": "^6.2.13",
+    "wav": "^1.0.2",
+    "wav-converter": "^1.0.0",
+    "websocket": "^1.0.34"
   }
 }
